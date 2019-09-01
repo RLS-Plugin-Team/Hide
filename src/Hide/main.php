@@ -16,10 +16,10 @@ class main extends PluginBase implements Listener{
  
     public function onEnable(){
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-		if(!file_exists($this->getDataFolder())){
-			mkdir($this->getDataFolder(), 0744, true);
-		}
-		$this->hide = new Config($this->getDataFolder() ."hide.yml", Config::YAML);
+	if(!file_exists($this->getDataFolder())){
+		mkdir($this->getDataFolder(), 0744, true);
+	}
+	$this->hide = new Config($this->getDataFolder() ."hide.yml", Config::YAML);
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) :bool{
@@ -33,7 +33,7 @@ class main extends PluginBase implements Listener{
 		            }else{
 		                $this->getServer()->broadcastMessage("§l§d権限者 §e{$sender->getName()} §6がサーバーに参加しました。");
 		            }
-		                $this->hide->remove($sender->getName());
+				$this->hide->remove($sender->getName());
 		                $this->hide->save();
 		                $this->hide->reload();
 		        }else{
@@ -57,12 +57,12 @@ class main extends PluginBase implements Listener{
         if($this->hide->exists($event->getPlayer()->getName())){
             if($event->getPlayer()->getName() == "Yusuke1201"){
                 $this->getServer()->broadcastMessage("§l§b管理人 §e{$event->getPlayer()->getName()} §6がサーバーに参加しました。");
-		    }else{
-		        $this->getServer()->broadcastMessage("§l§d権限者 §e{$event->getPlayer()->getName()} §6がサーバーに参加しました。");
-		    }
-            $this->hide->remove($event->getPlayer()->getName());
-		    $this->hide->save();
-		    $this->hide->reload();
+	    }else{
+		$this->getServer()->broadcastMessage("§l§d権限者 §e{$event->getPlayer()->getName()} §6がサーバーに参加しました。");
+	    }
+		$this->hide->remove($event->getPlayer()->getName());
+	        $this->hide->save();
+	        $this->hide->reload();
         }
     }
 }
