@@ -1,0 +1,12 @@
+---
+name: Hide
+main: Hide\main
+version: 1.0.0
+api: 3.4.0
+author: narapon
+load: STARTUP
+commands:
+  hide:
+    usage: /hide
+    description: 入退出処理
+...
